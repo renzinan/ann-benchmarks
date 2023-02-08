@@ -241,6 +241,7 @@ def run_docker(definition, dataset, count, runs, timeout, batch, cpu_limit,
         },
         cpuset_cpus=cpu_limit,
         mem_limit=mem_limit,
+        network_mode="host",
         detach=True)
     logger = logging.getLogger(f"annb.{container.short_id}")
 

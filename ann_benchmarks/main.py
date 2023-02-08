@@ -171,8 +171,11 @@ def main():
     random.shuffle(definitions)
 
     if args.algorithm:
-        logger.info(f'running only {args.algorithm}')
-        definitions = [d for d in definitions if d.algorithm == args.algorithm]
+        algs = args.algorithm.split(',')
+        logger.info(f'running only {algs}')
+        definitions = [d for d in definitions if d.algorithm in algs]
+        #logger.info(f'running only {args.algorithm}')
+        #definitions = [d for d in definitions if d.algorithm == args.algorithm]
 
     if not args.local:
         # See which Docker images we have available
